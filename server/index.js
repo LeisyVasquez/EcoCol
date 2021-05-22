@@ -1,23 +1,25 @@
 const express = require('express');
 const cors = require('cors');
+const morgan = require('morgan');
 const app = express();
-//Routes
-//Definir rutas aqui
+const routes = require('./routes/routes');
+require('dotenv').config({ path: '../.env' });
 //Erros middlewares
 const handleErrors = require("./error/hanldeErrors");
 
 //Middlewares
-app.use(cors());
+app.use(morgan('dev'));
 app.use(express.json());
-require('dotenv').config();
+app.use(cors());
 
-//Routes
-//Use routes here
+//Rutas
+app.use('/api', routes);
+
 //Errors
 app.use(handleErrors);
 
 //Assign port
-app.set('port', 5001);
+app.set('port', process.env.PORT || 5001);
 
 //Server
 app.listen(app.get('port'), () => {
