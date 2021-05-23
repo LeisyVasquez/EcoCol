@@ -1,10 +1,13 @@
 import React from 'react';
-import Navbar from '../components/base/Navbar';
+//import LogInNavbar from '../components/base/LogInNavbar';
+//import TravelerNavbar from '../components/base/TravelerNavbar'; 
+import EditorNavbar from '../components/base/EditorNavbar'; 
+
 import Home from '../components/Home';
 const home = () => {
  return(
     <div>
-      <Navbar />
+      <EditorNavbar />
       <Home />
     </div>
  );
