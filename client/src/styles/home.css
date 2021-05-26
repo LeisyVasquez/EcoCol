@@ -7,4 +7,16 @@
     background-color: rgba(0, 64, 255,0.1); 
     text-align: center;
     color: white;
-  }
+}
+.ruleta{
+  position: fixed;
+}
+.btn-ruleta{
+  position: absolute;
+  background: transparent;
+  border: transparent;
+}
+.img-ruleta{
+  width: 150px;
+  height: 150px;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import Ruleta from "../images/ruleta.png";
 import '../styles/home.css';
 
 const Home = () => {
@@ -23,11 +24,14 @@ const Home = () => {
                 <h2>Chorro de las Campanas</h2>
                 <p>Allí comenzará nuestro ascenso por un potrero que nos ofrecerá la vista del Valle de Aburrá entre. Proseguiremos en medio a bosques de pinos hasta llegar al borde de la Quebrada La Miel. Abandonaremos su cauce y comenzaremos un exigente ascenso entre pinos muy empinado (si tenemos suerte podremos observar algún Cacique Candela, ave endémica de estos bosques) y con ayuda de cuerdas llegaremos hasta un mirador, donde después de tomar un pequeño descanso, reanudaremos nuestra aventura bajando entre rocas, ayudados de cuerdas.</p>
             </div>
+            <div className="ruleta">
+              <button className="btn-ruleta"><img className="img-ruleta" src={Ruleta} alt="ruleta" /></button>
+            </div>
             <div className=" top-100 start-50 translate-middle">
             AJSDJSDFJJSDFSDFSDFSDFSDFSDFSDF
             <h2>Chorro de las Campanas</h2>
-
             </div>
+            
         </div>
     );
 }
