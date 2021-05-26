@@ -13,11 +13,13 @@
 }
 .btn-ruleta{
   position: absolute;
+  left: 1250px;
+  top: 425px;
   background: whitesmoke;
   border: transparent;
   border-radius: 5px;
 }
 .img-ruleta{
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
 }
