@@ -13,8 +13,9 @@
 }
 .btn-ruleta{
   position: absolute;
-  background: transparent;
+  background: whitesmoke;
   border: transparent;
+  border-radius: 5px;
 }
 .img-ruleta{
   width: 150px;
