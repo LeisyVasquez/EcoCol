@@ -8,7 +8,7 @@ const LogInNavbar = () => {
                 <div className="mx-3 my-1" style={{ width: '100vw' }}>
                     <a className="navbar-brand" href="/" >
                         <img src="https://raw.githubusercontent.com/JuanManuel-GAA/equipo7_gaa_ppi2020/master/Recursos%20gu%C3%ADa/logo%20(1).png" alt="logo" width="34" height="31" />
-                        <h4 className="d-inline">   EcoCol</h4>
+                        <h4 className="d-inline">EcoCol</h4>
                     </a>
                     <button className="btn float-end" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop">
                         <img src="https://raw.githubusercontent.com/JuanManuel-GAA/equipo7_gaa_ppi2020/master/Recursos%20gu%C3%ADa/profile.png" alt="logo" width="35" height="33" />
