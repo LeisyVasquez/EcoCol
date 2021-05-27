@@ -1,19 +1,19 @@
+//Import dependencies
 const express = require('express');
 const cors = require('cors');
-const morgan = require('morgan');
+//Import devs
 const app = express();
 const routes = require('./routes/routes');
-require('dotenv').config({ path: '../.env' });
-//Erros middlewares
+//Error handdling
 const handleErrors = require("./error/hanldeErrors");
 
 //Middlewares
-app.use(morgan('dev'));
 app.use(express.json());
 app.use(cors());
+require("dotenv").config();
 
-//Rutas
-app.use('/api', routes);
+//Routes
+app.use('/', routes);
 
 //Errors
 app.use(handleErrors);
