@@ -18,8 +18,8 @@ DROP TABLE IF EXISTS `user`;
 --
 
 CREATE TABLE `city` (
-  `codigo` int(15) NOT NULL,
-  `name` varchar(255) NOT NULL
+  `code` int(10),
+  `name` varchar(85) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -29,10 +29,10 @@ CREATE TABLE `city` (
 --
 
 CREATE TABLE `favoritedAndVisitedPlace` (
-  `id` int(15) NOT NULL,
+  `id` int(10),
   `idUser` int(15) NOT NULL,
-  `idPlace` int(15) NOT NULL,
-  `detail` varchar(300) DEFAULT NULL
+  `idPlace` int(10) NOT NULL,
+  `detail` enum('visited','favourite','visitedAndFavourite') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -42,8 +42,8 @@ CREATE TABLE `favoritedAndVisitedPlace` (
 --
 
 CREATE TABLE `photoPlace` (
-  `id` int(15) NOT NULL,
-  `idPlace` int(15) NOT NULL,
+  `id` int(15),
+  `idPlace` int(10) NOT NULL,
   `photoPath` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -54,18 +54,18 @@ CREATE TABLE `photoPlace` (
 --
 
 CREATE TABLE `place` (
-  `id` int(15) NOT NULL,
+  `id` int(10),
   `name` varchar(255) NOT NULL,
-  `city` int(15) NOT NULL,
+  `codeCity` int(10) NOT NULL,
   `hashCodeQR` varchar(255) DEFAULT NULL,
   `codeLocation` varchar(255) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `recommendations` varchar(255) DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
-  `hours` time NOT NULL,
-  `entryPrice` varchar(255) NOT NULL,
-  `fauna` varchar(255) NOT NULL,
-  `flora` varchar(255) NOT NULL
+  `description` TEXT NOT NULL,
+  `recommendations` varchar(255) NOT NULL,
+  `address` varchar(150) NOT NULL,
+  `hours` varchar(200) NOT NULL,
+  `entryPrice` varchar(200) NOT NULL,
+  `fauna` TEXT NOT NULL,
+  `flora` TEXT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -75,11 +75,11 @@ CREATE TABLE `place` (
 --
 
 CREATE TABLE `user` (
-  `id` int(15) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `typeUser` varchar(255) NOT NULL,
+  `id` int(15),
+  `name` varchar(120) NOT NULL,
+  `email` varchar(80) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `typeUser` enum('editor','traveler') NOT NULL,
   `birthDay` date NOT NULL,
   `profilePhoto` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -92,7 +92,7 @@ CREATE TABLE `user` (
 -- Indexes for table `city`
 --
 ALTER TABLE `city`
-  ADD PRIMARY KEY (`codigo`);
+  ADD PRIMARY KEY (`code`);
 
 --
 -- Indexes for table `favoritedAndVisitedPlace`
@@ -115,7 +115,7 @@ ALTER TABLE `photoPlace`
 --
 ALTER TABLE `place`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `city` (`city`);
+  ADD KEY `codeCity` (`codeCity`);
 
 --
 -- Indexes for table `user`
@@ -131,25 +131,26 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `favoritedAndVisitedPlace`
 --
 ALTER TABLE `favoritedAndVisitedPlace`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `photoPlace`
 --
 ALTER TABLE `photoPlace`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `place`
 --
 ALTER TABLE `place`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(15) NOT NULL AUTO_INCREMENT;
+
 
 --
 -- Constraints for dumped tables
@@ -166,11 +167,11 @@ ALTER TABLE `favoritedAndVisitedPlace`
 -- Constraints for table `photoPlace`
 --
 ALTER TABLE `photoPlace`
-  ADD CONSTRAINT `photoPlace_ibfk_1` FOREIGN KEY (`idPlace`) REFERENCES `favoritedAndVisitedPlace` (`id`);
+  ADD CONSTRAINT `photoPlace_ibfk_1` FOREIGN KEY (`idPlace`) REFERENCES `place` (`id`);
 
 --
 -- Constraints for table `place`
 --
 ALTER TABLE `place`
-  ADD CONSTRAINT `place_ibfk_1` FOREIGN KEY (`city`) REFERENCES `city` (`codigo`);
+  ADD CONSTRAINT `place_ibfk_1` FOREIGN KEY (`codeCity`) REFERENCES `city` (`code`);
 COMMIT;

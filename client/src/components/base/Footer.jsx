@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <>
             <div className="footer-copyright">
-                <div className="bd-footer mt-5 bg-light">
+                <div className="bd-footer mt-5 bg-dark text-light text-center p-2 ">
                     © 2021 EcoCol, All rights reserved. 
                     <a className="footer-link" href="https://github.com/LeisyVasquez/EcoCol">
                         GitHub Code</a>

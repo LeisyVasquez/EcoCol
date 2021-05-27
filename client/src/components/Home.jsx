@@ -6,14 +6,8 @@ const Home = () => {
   return (
     <div className="Home">
       <div className="ruleta">
-        <button
-          className="btn-ruleta"
-        >
-          <img
-            className="img-ruleta"
-            src={Ruleta}
-            alt="ruleta"
-          />
+        <button className="btn-ruleta">
+          <img className="img-ruleta" src={Ruleta} alt="ruleta" />
         </button>
       </div>
       <input
@@ -22,6 +16,7 @@ const Home = () => {
         placeholder="Buscar"
         aria-label="Buscar"
       />
+
       <div className="container p-2 my-4">
         <img
           className="float-start m-2"
@@ -53,6 +48,7 @@ const Home = () => {
           el paisaje.{" "}
         </p>
       </div>
+
       <div className="container p-2">
         <img
           className="float-start m-2"
