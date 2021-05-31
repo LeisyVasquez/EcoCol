@@ -19,7 +19,7 @@ app.use('/api', routes);
 app.use(handleErrors);
 
 //Assign port
-app.set('port', process.env.PORT || 5001);
+app.set('port', process.env.SERVER_PORT|| 5001);
 
 //Server
 app.listen(app.get('port'), () => {
