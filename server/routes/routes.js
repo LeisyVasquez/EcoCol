@@ -33,7 +33,7 @@ router.post('/addUser', async (req, res) =>{
         res.json({});
     }
     console.log("Usuario agregado");
-}); 
+});
 
 
 module.exports = router; 
