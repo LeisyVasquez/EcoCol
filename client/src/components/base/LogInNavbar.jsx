@@ -23,8 +23,8 @@ const LogInNavbar = () => {
                             <img className="d-block mt-3 mx-auto" src="https://raw.githubusercontent.com/JuanManuel-GAA/equipo7_gaa_ppi2020/22a4be8671d3b2ca676fd7a5f0d21e6148c81859/profile-user.svg" alt="profile" width="150" />
                         </div>
                         <div className="d-grid gap-2 col-6 mx-auto my-5 w-75 ">
-                            <a className="ancle-signin" href="/signin"><button className="btn btn-dark mt-5 fs-5" type="button">Iniciar sesión</button> </a>
-                            <a className="ancle-signup" href="/signup"><button className="btn btn-dark mt-4 fs-5" type="button">  Registrarse </button> </a>
+                            <button className="btn btn-dark mt-5 fs-5" type="button"><a className="ancle-signin" className="text-white" href="/signin"> Iniciar sesión </a></button> 
+                            <button className="btn btn-dark mt-4 fs-5" type="button"><a className="ancle-signup" className="text-white" href="/signup"> Registrarse </a></button>
                         </div>
                     </div>
                 </div>
