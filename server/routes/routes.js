@@ -4,11 +4,13 @@ const router = Router();
 
 
 const {
-    getMain
+    getMain, 
+    getAllPlaces
 } = require('./controller'); 
 
 //Rutas del backend
 router.get('/', getMain); 
+router.get('/getAllPlaces', getAllPlaces); 
 
 
 module.exports = router; 
