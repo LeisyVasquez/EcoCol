@@ -18,13 +18,15 @@ const Home = () => {
       />
 
       <div className="container p-2 my-4">
-        <img
-          className="float-start m-2"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS82yDrhjKDPkonzkqy6Q9iFZOJMwR99n9qVA&usqp=CAU"
-          alt="imagen lugar"
-          width="200"
-          height="200"
-        />
+        <div className="divImgPlace">
+          <img
+            className="float-start m-2 imgPlace"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS82yDrhjKDPkonzkqy6Q9iFZOJMwR99n9qVA&usqp=CAU"
+            alt="imagen lugar"
+            width="200"
+            height="200"
+          />
+        </div>
         <div className="float-end border border-white p-2 mt-2 mx-3">
           <h5 className="mt-1">¿Visitaste el lugar?</h5>
           <img

@@ -5,7 +5,7 @@ const app = express();
 const routes = require('./routes/routes');
 require('dotenv').config({ path: '../.env' });
 //Erros middlewares
-const handleErrors = require("./error/hanldeErrors");
+const handleErrors = require("./error/handleErrors");
 
 //Middlewares
 app.use(morgan('dev'));
