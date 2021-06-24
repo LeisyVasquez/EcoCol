@@ -104,7 +104,6 @@ const Home = () => {
             <button className="btn btn-dark m-5 fs-5" data-bs-toggle="collapse" data-bs-target="#collapseDescription" type="button">Descripción</button>
             <button className="btn btn-dark m-2 fs-5" data-bs-toggle="collapse" data-bs-target="#collapseLocation" type="button">Ubicación</button>
             <button className="btn btn-dark m-5 fs-5" data-bs-toggle="collapse" data-bs-target="#collapseRecommendations" type="button">Recomendaciones</button>
-
           </p>
           <div className="collapse-fauna" id="collapseFauna">
             <div className="card card-body">
