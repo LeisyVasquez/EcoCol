@@ -1,21 +1,22 @@
 const mysql = require('mysql2');
-require('dotenv').config({ path: '../.env' });
+require('dotenv').config();
 
-const connect = mysql.createConnection({
+const connect = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
     port: process.env.DB_PORT
 });
-
+/*  
 connect.connect(function (err) {
     if (err) {
-        console.error('Database error');
+        console.log(err)
+        console.log('Database error');
         return;
     }
     console.log('Sucessful database connection');
-});
+}); */
 
 module.exports = {
     cnn_mysql: connect
