@@ -28,7 +28,6 @@ const EditorNavbar = () => {
                             <button class="btn btn-dark mt-5 fs-5" type="button">Mi perfil</button>
                             <button class="btn btn-dark mt-3 fs-5" type="button">Registrar nuevos editores</button>
                             <button class="btn btn-dark mt-3 fs-5" type="button">Cerrar sesión</button>
-
                         </div>
                     </div>
                 </div>
