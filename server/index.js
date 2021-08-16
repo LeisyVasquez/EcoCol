@@ -23,5 +23,5 @@ app.set('port', process.env.PORT || 5001);
 
 //Server
 app.listen(app.get('port'), () => {
-    console.log(`Running on port ${app.get('port')}!`);
+    console.log(`Server running on port ${app.get('port')}`);
 });

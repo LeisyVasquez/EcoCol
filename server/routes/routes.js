@@ -1,11 +1,6 @@
 const { Router } = require('express');
 const router = Router();
-const {cnn_mysql} = require("../database/db"); 
-
-
-const {
-    getMain
-} = require('./controller'); 
+const {cnn_mysql} = require("../database/dbOracle.js"); 
 
 //Obtener usuarios
 router.get("/getUsers", (req, res) =>{
