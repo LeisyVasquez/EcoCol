@@ -17,7 +17,7 @@ const TabsInformation = () => {
   const TabPane = Tabs.TabPane
 
   return (
-    <Tabs className='mt-3'>
+    <Tabs className='mt-4'>
       <TabPane
         tab={
           <span>

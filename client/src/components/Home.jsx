@@ -55,7 +55,7 @@ const Home = () => {
           contar las cientos de especies que durante el camino adornan y alegran
           el paisaje.{' '}
         </p>
-        <button className='button-modal'>Ver más</button>
+        <button className='button-modal p-1' onClick={() => setOpen(true)}>Información</button>
       </div>
 
       <div className='container p-2'>
@@ -88,9 +88,6 @@ const Home = () => {
           aventura bajando entre rocas, ayudados de cuerdas.
         </p>
       </div>
-      <button className='button-modal' onClick={() => setOpen(true)}>
-        Información
-      </button>
 
       {open && (
         <Modal
@@ -112,7 +109,7 @@ const Home = () => {
             className='carousel slide'
             data-bs-ride='carousel'
           >
-            <div className='contenedor carousel-inner m-auto' style={{ width: '90%', boxShadow: '0 14px 25px #70db24' }}>
+            <div className='carousel-inner m-auto' style={{ width: '90%', boxShadow: '0 20px 100px #70db24' }}>
               <div className='carousel-item active'>
                 <img
                   src='https://www.medellin.travel/wp-content/uploads/2020/06/Alto-San-Miguel.jpg'
