@@ -142,4 +142,4 @@ const TabsInformation = () => {
   )
 }
 
-export default TabsInformation
+export default TabsInformation;

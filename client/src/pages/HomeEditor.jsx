@@ -1,17 +1,17 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
-import LogInNavbar from '../components/base/LogInNavbar';
+import EditorNavbar from '../components/base/EditorNavbar'; 
 import Home from '../components/Home';
 import Footer from "../components/base/Footer";
 
-const home = () => {
+const homeEditor = () => {
  return(
     <div>
-      <LogInNavbar />
+      <EditorNavbar />
       <Home />
       <Footer />
     </div>
  );
 }
 
-export default withRouter(home); 
+export default withRouter(homeEditor); 

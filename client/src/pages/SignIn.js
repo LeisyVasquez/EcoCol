@@ -20,7 +20,7 @@ const SignIn = () => {
                         <input type="password" className="form-control input-password " id="exampleInputPassword1" />
                     </div>
                     <div className="d-flex justify-content-between"><a className="help-password" href="/">¿Se te olvidó tu contraseña?</a>
-                        <a className="login" href="/"> <button type="button" className="btn btn-dark btn-ingresar">Ingresar</button> </a>
+                        <button type="button" className="btn btn-dark btn-ingresar"> <a className="login" href="/home-editor"> Ingresar </a></button>
                     </div>
                     <div className="pt-3 pb-4 help-account">¿No tienes una cuenta?<a className="help-create" href="/signup">Crear una cuenta</a></div>
                 </form>
