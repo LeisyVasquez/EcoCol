@@ -16,7 +16,7 @@ var connAttrs = {
     "connectString": "(DESCRIPTION =(LOAD_BALANCE = ON)(FAILOVER = ON)(ADDRESS =(PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))(ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=XE)(FAILOVER_MODE=(TYPE=SELECT)(METHOD = BASIC))))"
 }
 
-app.get("/", function (req, res) {
+app.get("/contacts", function (req, res) {
     "use strict";
 
     oracledb.getConnection(connAttrs, function (err, connection) {
@@ -30,7 +30,7 @@ app.get("/", function (req, res) {
             }));
             return;
         }
-        connection.execute("SELECT * FROM name", {}, {
+        connection.execute("SELECT * FROM CONTACTS", {}, {
             outFormat: oracledb.OBJECT // Retorna el resultado como Objeto
         }, function (err, result) {
             if (err) {
@@ -53,7 +53,7 @@ app.get("/", function (req, res) {
                     if (err) {
                         console.error(err.message);
                     } else {
-                        console.log("GET /name : Connection release");
+                        console.log("GET /CONTACTS : Connection release");
                     }
                 });
         });
