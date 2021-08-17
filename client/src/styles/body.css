@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@300;400&display=swap');
 #body {
     background-image: url(https://voices.earth/wp-content/uploads/2021/02/iStock-1151621651-1920x1080.jpg);
     background-attachment: fixed;
     background-size: cover;
+    font-family: 'Overpass', sans-serif; 
 }
 .container{
     border-radius: 8px;
