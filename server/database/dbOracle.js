@@ -1,14 +1,6 @@
 var express = require("express");
 var app = express();
-var bodyParser = require("body-parser");
 var oracledb = require("oracledb");
-
-/* app.use(bodyParser.json());
-
-
-app.use(bodyParser.urlencoded({
-    extended: true
-})); */
 
 var connAttrs = {
     "user": "system",
