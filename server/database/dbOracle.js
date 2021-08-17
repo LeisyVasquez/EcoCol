@@ -2,56 +2,33 @@ var express = require("express");
 var app = express();
 var oracledb = require("oracledb");
 
-var connAttrs = {
-    "user": "admin",
-    "password": "123",
-    "connectString": "(DESCRIPTION =(LOAD_BALANCE = ON)(FAILOVER = ON)(ADDRESS =(PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))(ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=XE)(FAILOVER_MODE=(TYPE=SELECT)(METHOD = BASIC))))"
-}
+const config = {
+    user: 'admin',
+    password: '123',
+    connectString: 'DESKTOP-1B20QV7:1521/'
+  }
+  
+  async function getEmployee (empId) {
+    let conn
+  
+    try {
+      conn = await oracledb.getConnection(config)
+      const result = await conn.execute(
+        "SELECT * FROM cities;",
+        [empId]
+      )
+      console.log(result.rows[0])
+    } catch (err) {
+      console.log('Ouch!', err)
+    } finally {
+      if (conn) { // conn assignment worked, need to close
+        await conn.close()
+      }
+    }
+  }
+  
+  getEmployee(101)
 
-app.get("/places", function (req, res) {
-    "use strict";
-
-    oracledb.getConnection(connAttrs, function (err, connection) {
-        if (err) {
-            //Error al conectar a la BD
-            res.set("Content-type", "application/json");
-            res.status(500).send(JSON.stringify({
-                status: 500,
-                message: "Error connecting to DB",
-                detailed_message: err.message
-            }));
-            return;
-        }
-        connection.execute("SELECT * FROM PLACES", {}, {
-            outFormat: oracledb.OBJECT // Retorna el resultado como Objeto
-        }, function (err, result) {
-            if (err) {
-                res.set("Content-Type", "application/json");
-                res.status(500).send(JSON.stringify({
-                    status: 500,
-                    message: "Error getting the dba_tablespaces",
-                    detailed_message: err.message
-                }));
-            } else {
-                res.header("Access-Control-Allow-Origin", "*");
-                res.header("Access-Control-Allow-Headers", "Content-Type");
-                res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
-                res.contentType("aplication/json").status(200);
-                res.send(JSON.stringify(result.rows));
-            }
-            // Conexión establecida
-            connection.release(
-                function (err) {
-                    if (err) {
-                        console.error(err.message);
-                    } else {
-                        console.log("GET /PLACES : Connection release");
-                    }
-                });
-        });
-    });
-});
-
-app.listen(3000, function () {
-    console.log("Database running on Port 3000");
+  app.listen(4000, function () {
+    console.log("Database running on Port 4000");
 });
