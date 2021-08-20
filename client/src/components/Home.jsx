@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
-import { Modal } from 'antd'
-import '../styles/home.css'
-import Ruleta from '../images/ruleta.png'
-import 'antd/dist/antd.css'
-import TabsInformation from './TabsInformation'
+import React, { useState } from 'react';
+import { Modal } from 'antd';
+import Ruleta from '../images/ruleta.png';
+import TabsInformation from './TabsInformation';
+import 'antd/dist/antd.css';
+import '../styles/home.css';
 
 const Home = () => {
-  const [open, setOpen] = useState(false)
+
+  const [open, setOpen] = useState(false);
+
   return (
     <div className='Home'>
       <div className='ruleta'>
@@ -98,7 +100,7 @@ const Home = () => {
           confirmLoading
           cancelText='Salir'
           okText='Escanear código QR'
-          onOk={() => {}}
+          onOk={() => { }}
           width={920}
         >
           <b>
@@ -109,7 +111,7 @@ const Home = () => {
             className='carousel slide'
             data-bs-ride='carousel'
           >
-            <div className='carousel-inner m-auto' style={{ width: '90%', boxShadow: '0 20px 100px #70db24' }}>
+            <div className='carousel-inner m-auto' style={{ width: '90%', boxShadow: '0 20px 40px #70db24' }}>
               <div className='carousel-item active'>
                 <img
                   src='https://www.medellin.travel/wp-content/uploads/2020/06/Alto-San-Miguel.jpg'
@@ -146,4 +148,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home;
