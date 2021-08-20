@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
-import { Modal } from 'antd'
-import '../styles/home.css'
-import Ruleta from '../images/ruleta.png'
-import 'antd/dist/antd.css'
-import TabsInformation from './TabsInformation'
+import React, { useState } from 'react';
+import { Modal } from 'antd';
+import Ruleta from '../images/ruleta.png';
+import TabsInformation from './TabsInformation';
+import 'antd/dist/antd.css';
+import '../styles/home.css';
 
 const Home = () => {
-  const [open, setOpen] = useState(false)
+
+  const [open, setOpen] = useState(false);
+
   return (
     <div className='Home'>
       <div className='ruleta'>
@@ -98,7 +100,7 @@ const Home = () => {
           confirmLoading
           cancelText='Salir'
           okText='Escanear código QR'
-          onOk={() => {}}
+          onOk={() => { }}
           width={920}
         >
           <b>
