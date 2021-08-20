@@ -10,7 +10,7 @@ public class PlaceModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private Long id;
-    private Long codecity;
+    //private Long codecity;
     private String name;
     //private String hashsCodeQR;
     //private String codeLOcation;
