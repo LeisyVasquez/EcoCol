@@ -22,7 +22,7 @@ public class PlaceModel {
     private String fauna;
     private String flora;
 
-
+ 
     public Long getId() {
         return id;
     }

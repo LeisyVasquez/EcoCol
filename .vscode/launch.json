@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ServerSpringBootApplication<serverSpringBoot>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.ecocol.serverSpringBoot.ServerSpringBootApplication",
+            "projectName": "serverSpringBoot",
+            "args": ""
+        }
+    ]
+}

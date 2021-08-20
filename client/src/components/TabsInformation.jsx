@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from 'react';
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
 import {
   AppleOutlined,
   AndroidOutlined,
@@ -13,22 +12,17 @@ import {
   PictureOutlined
 } from '@ant-design/icons'
 import { Tabs } from 'antd'
+import axios from "axios";
 
-const TabsInformation = () => {
+
+const TabsInformation = (props) => {
   const TabPane = Tabs.TabPane;
 
-  const [places, setPlaces] = useState([]);
+  const place = props; 
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/getAllPlaces")
-      .then((res) => {
-        setPlaces(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
+     console.log(props)
+   }, []);
 
   return (
     <Tabs className='mt-4'>
@@ -42,11 +36,7 @@ const TabsInformation = () => {
         key='1'
       >
         <div className='card card-body fs-6'>
-          {places.map(place =>{
-            return (
-              <p>{place.fauna}</p>
-            )
-          })}
+          <p>{place.fauna}</p>
         </div>
       </TabPane>
 
@@ -60,11 +50,7 @@ const TabsInformation = () => {
         key='2'
       >
         <div className='card card-body fs-6'>
-        {places.map(place =>{
-            return (
-              <p>{place.flora}</p>
-            )
-          })}
+          <p>{place.flora}</p>
         </div>
       </TabPane>
 
@@ -78,11 +64,7 @@ const TabsInformation = () => {
         key='3'
       >
         <div className='card card-body fs-6'>
-        {places.map(place =>{
-            return (
-              <p>{place.address}</p>
-            )
-          })}
+          <p>{place.address}</p>
         </div>
       </TabPane>
 
@@ -96,11 +78,7 @@ const TabsInformation = () => {
         key='4'
       >
         <div className='card card-body fs-6'>
-        {places.map(place =>{
-            return (
-              <p>{place.description}</p>
-            )
-          })}
+          <p>{place.description}</p>
         </div>
       </TabPane>
 
@@ -114,11 +92,7 @@ const TabsInformation = () => {
         key='5'
       >
         <div className='card card-body fs-6'>
-        {places.map(place =>{
-            return (
-              <p>{place.recommendations}</p>
-            )
-          })}
+          <p>{place.recommendations}</p>
         </div>
       </TabPane>
 
@@ -132,11 +106,7 @@ const TabsInformation = () => {
         key='6'
       >
         <div className='card card-body fs-6'>
-        {places.map(place =>{
-            return (
-              <p>{place.hours}</p>
-            )
-          })}
+          <p>{place.hours}</p>
         </div>
       </TabPane>
 
@@ -150,11 +120,7 @@ const TabsInformation = () => {
         key='7'
       >
         <div className='card card-body fs-6'>
-        {places.map(place =>{
-            return (
-              <p>{place.entryPrice}</p>
-            )
-          })}
+          <p>{place.entryPrice}</p>
         </div>
       </TabPane>
     </Tabs>
