@@ -40,7 +40,14 @@ const Home = () => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          console.log(idPlace);
+          axios
+            .delete(`${URL_SERVER_NODE}/deletePlace`, idPlace)
+            .then((res) => {
+              console.log(res)
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }
       });
   };

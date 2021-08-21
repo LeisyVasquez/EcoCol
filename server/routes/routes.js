@@ -5,12 +5,16 @@ const router = Router();
 const {
     getMain, 
     getAllPlaces,
-    insertUser
+    insertUser, 
+    deletePlace
 } = require('./controller'); 
 
 //Rutas del backend
 router.get('/', getMain);
 router.get('/getAllPlaces', getAllPlaces);
+router.delete('/deletePlace', deletePlace); 
+
+
 router.post("/insertUser", insertUser);
 
 module.exports = router;
