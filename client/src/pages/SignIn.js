@@ -1,13 +1,13 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import Navbar from "../components/base/LogInNavbar";
-import Footer from "../components/base/Footer";
+//import Navbar from "../components/traveler/";
+import Footer from "../components/Footer";
 import "../styles/signin.css";
 
 const SignIn = () => {
     return (
         <>
-            <Navbar />
+            {/*<Navbar />*/}
             <div className="container mt-5">
                 <h1 style={{ color: "white" }} className="pt-5 pb-3">Iniciar Sesión</h1>
                 <form>

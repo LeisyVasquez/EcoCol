@@ -1,13 +1,13 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
-import TravelerNavbar from '../components/base/TravelerNavbar'; 
-import Home from '../components/Home';
-import Footer from "../components/base/Footer";
+import Navbar from '../../components/traveler/Navbar'; 
+import Home from '../../components/traveler/Home';
+import Footer from "../../components/Footer";
 
 const homeTraveler = () => {
  return(
     <div>
-      <TravelerNavbar />
+      <Navbar />
       <Home />
       <Footer />
     </div>

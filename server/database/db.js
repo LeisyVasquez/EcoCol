@@ -9,14 +9,14 @@ const connect = mysql.createConnection({
     port: process.env.DB_PORT
 });
  
-connect.connect(function (err) {
-    if (err) {
-        console.log(err)
-        console.log('Database error');
-        return;
-    }
-    console.log('Sucessful database connection');
-});
+// connect.connect(function (err) {
+//     if (err) {
+//         console.log(err)
+//         console.log('Database error');
+//         return;
+//     }
+//     console.log('Sucessful database connection');
+// });
 
 module.exports = {
     cnn_mysql: connect

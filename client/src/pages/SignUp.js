@@ -1,7 +1,7 @@
 import React, { useState } from "react"; 
 import { withRouter } from "react-router-dom";
-import Navbar from "../components/base/LogInNavbar";
-import Footer from "../components/base/Footer";
+//import Navbar from "../components/traveler/";
+import Footer from "../components/Footer";
 import axios from "axios";
 import "../styles/signup.css";
 
@@ -17,7 +17,7 @@ const SignUp = () => {
 
     return (
         <>
-            <Navbar />
+            {/*<Navbar />*/}
             <div className="container mt-5" >
                 <h1 className="pt-5 pb-3" style={{ color: "white"}}>Crea tu cuenta</h1>
                 <form>
