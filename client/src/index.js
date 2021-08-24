@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 //Import path
-import { _SignIn, _SignUp, _HomeEditor, _HomeTraveler} from "./config/path";
+import { _SignIn, _SignUp, _HomeEditor, _HomeTraveler, _ListPlacesToCreated} from "./config/path";
 
 //Styles
 import './styles/body.css';
@@ -14,6 +14,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import HomeEditor from './pages/editor/Home';
 import HomeTraveler from './pages/traveler/Home';
+import ListPlacesToCreated from './pages/editor/ListPlacesToCreated';
 
 const App = () => {
   return(
@@ -23,6 +24,8 @@ const App = () => {
         <Route exact path={_SignUp} component={SignUp} />
         <Route exact path={_HomeEditor} component={HomeEditor} />
         <Route exact path={_HomeTraveler} component={HomeTraveler} />
+        <Route exact path={_ListPlacesToCreated} component={ListPlacesToCreated} />
+
       </Switch>
     </BrowserRouter>
   )

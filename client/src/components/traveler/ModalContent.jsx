@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  AppleOutlined,
-  AndroidOutlined,
   BugOutlined,
-  FireFilled,
   DollarCircleOutlined,
   ClockCircleOutlined,
   FormOutlined,
@@ -14,7 +11,7 @@ import {
 import { Tabs } from 'antd'
 
 
-const TabsInformation = ({ places, idPlaceSelect }) => {
+const ModalContent = ({ places, idPlaceSelect }) => {
   const TabPane = Tabs.TabPane;
   const [place, setPlace] = useState([]);
 
@@ -170,4 +167,4 @@ const TabsInformation = ({ places, idPlaceSelect }) => {
   )
 }
 
-export default TabsInformation;
+export default ModalContent;

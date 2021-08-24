@@ -1,6 +1,7 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { Modal } from "antd";
-import ModalContent from "../traveler/ModalContent";
+import ModalContentEdit from "./ModalContentEdit";
+import ModalContentCreate from "./ModalContentCreate";
 import "antd/dist/antd.css";
 import "../../styles/home.css";
 import axios from "axios";
@@ -11,11 +12,13 @@ import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 import swal from "sweetalert2";
 
 const Home = () => {
-  const [open, setOpen] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
+  const [openCreate, setOpenCreate] = useState(false);
   const [places, setPlaces] = useState([]);
   const [idPlaceSelect, setIdPlaceSelect] = useState([]);
+  const [dataPlaceToUpdate, setDataPlaceToUpdate] = useState({});
 
-  useLayoutEffect(() => {
+  const getAllPlaces = () => {
     axios
       .get(`${URL_SERVER_NODE}/getAllPlaces`)
       .then((res) => {
@@ -24,9 +27,13 @@ const Home = () => {
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  useLayoutEffect(() => {
+    getAllPlaces();
   }, []);
 
-  const deletePlace = (idPlace) => {
+  const deletePlace = async (idPlace) => {
     swal
       .fire({
         title: "¿Estás seguro de eliminar este lugar?",
@@ -39,28 +46,76 @@ const Home = () => {
         reverseButtons: true,
       })
       .then((result) => {
+        setOpenEdit(false);
         if (result.isConfirmed) {
           axios
-            .delete(`${URL_SERVER_NODE}/deletePlace`, idPlace)
+            .delete(`${URL_SERVER_NODE}/deletePlace`, { data: { id: idPlace } })
             .then((res) => {
-              console.log(res)
+              if (res.status === 200) {
+                getAllPlaces();
+                swal.fire({
+                  icon: "success",
+                  title: "Lugar eliminado coorrectamente",
+                  showConfirmButton: false,
+                  timer: 2000,
+                });
+              } else {
+                getAllPlaces();
+                swal.fire({
+                  icon: "info",
+                  title: "Ocurrió un evento inesperado",
+                  text: "Por favor verifique de nuevo si el lugar fue eliminado, sino inténtelo de nuevo o regrese después",
+                  showConfirmButton: false,
+                  timer: 3500,
+                });
+              }
             })
             .catch((err) => {
-              console.log(err);
+              setOpenEdit(false);
+              swal.fire({
+                icon: "error",
+                title: "Error interno del servidor",
+                text: "Intente de nuevo o regrese después",
+                showConfirmButton: false,
+                timer: 3000,
+              });
             });
         }
+      });
+  };
+
+  const updatePlace = (idPlace) => {
+    console.log(dataPlaceToUpdate);
+    axios
+      .put(`${URL_SERVER_NODE}/updatePlace`, dataPlaceToUpdate)
+      .then((res) => {
+        setOpenEdit(false);
+        if (res.status === 200) {
+          getAllPlaces();
+          swal.fire({
+            icon: "success",
+            title: "Lugar actualizado correctamente",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        }
+      })
+      .catch((err) => {
+        setOpenEdit(false);
+        swal.fire({
+          icon: "error",
+          title: "Error interno del servidor",
+          text: "Intente de nuevo o regrese después",
+          showConfirmButton: false,
+          timer: 3000,
+        });
       });
   };
 
   return places.length > 0 ? (
     <div className="Home">
       <button className="btn mt-4" style={{ marginLeft: "88%" }}>
-        <FontAwesomeIcon
-          icon={faPlusSquare}
-          size="3x"
-          color="white"
-          pull="right"
-        />
+        <FontAwesomeIcon icon={faPlusSquare} size="3x" color="white" onClick={()=>setOpenCreate(true)}/>
       </button>
       <input
         className="form-control fs-5 w-75 mx-auto"
@@ -68,9 +123,9 @@ const Home = () => {
         placeholder="Buscar"
         aria-label="Buscar"
       />
-      <div></div>
+
       <div>
-        {places.map((value, key) => {
+        {_.map(places, (value, key) => {
           return (
             <div
               className="container place p-2 my-5"
@@ -102,34 +157,61 @@ const Home = () => {
               <p>{value.description}</p>
               <button
                 className="button-modal-editor p-1"
+                onClick={() => deletePlace(value.id)}
+              >
+                Eliminar
+              </button>
+              <button
+                className="button-modal-editor p-1"
                 onClick={() => {
-                  setOpen(true);
+                  setOpenEdit(true);
                   setIdPlaceSelect(value.id);
                 }}
               >
                 Editar
               </button>
-              <button
-                className="button-modal-editor p-1"
-                onClick={() => deletePlace(value.id)}
-              >
-                Eliminar
-              </button>
             </div>
           );
         })}
-        {open && (
+
+        {openEdit && (
           <Modal
-            title={<b>Información del lugar</b>}
-            visible={open}
+            title={<b>Editar lugar</b>}
+            visible={openEdit}
             style={{ top: 50 }}
-            onCancel={() => setOpen(false)}
-            confirmLoading
-            cancelText="Salir"
-            okText="Escanear código QR"
-            width={920}
+            maskClosable={false}
+            keyboard={false}
+            onCancel={() => setOpenEdit(false)}
+            cancelText="Cancelar"
+            okText="Actualizar"
+            width={800}
+            bodyStyle={{ padding: "30px" }}
+            onOk={updatePlace}
           >
-            <ModalContent places={places} idPlaceSelect={idPlaceSelect} />
+            <ModalContentEdit
+              places={places}
+              idPlaceSelect={idPlaceSelect}
+              setDataPlaceToUpdate={setDataPlaceToUpdate}
+              dataPlaceToUpdate={dataPlaceToUpdate}
+            />
+          </Modal>
+        )}
+
+        {openCreate && (
+          <Modal
+            title={<b>Crear lugar</b>}
+            visible={openCreate}
+            style={{ top: 50 }}
+            maskClosable={false}
+            keyboard={false}
+            onCancel={() => setOpenCreate(false)}
+            cancelText="Cancelar"
+            okText="Añadir"
+            width={800}
+            bodyStyle={{ padding: "30px" }}
+            onOk={updatePlace}
+          >
+            <ModalContentCreate />
           </Modal>
         )}
       </div>
