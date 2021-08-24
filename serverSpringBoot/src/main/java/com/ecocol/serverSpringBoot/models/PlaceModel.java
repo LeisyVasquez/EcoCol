@@ -10,10 +10,10 @@ public class PlaceModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private Long id;
-    //private Long codecity;
+    // private Long codecity;
     private String name;
-    //private String hashsCodeQR;
-    //private String codeLOcation;
+    // private String hashsCodeQR;
+    // private String codeLOcation;
     private String description;
     private String recomendations;
     private String address;
@@ -26,20 +26,23 @@ public class PlaceModel {
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
-    public void setName(String name){
+
+    public void setName(String name) {
         this.name = name;
     }
 
     public String getDescription() {
         return description;
     }
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -47,6 +50,7 @@ public class PlaceModel {
     public String getRecomendations() {
         return recomendations;
     }
+
     public void setRecomendations(String recomendations) {
         this.recomendations = recomendations;
     }
@@ -54,6 +58,7 @@ public class PlaceModel {
     public String getAddress() {
         return address;
     }
+
     public void setAddress(String address) {
         this.address = address;
     }
@@ -61,6 +66,7 @@ public class PlaceModel {
     public String getHours() {
         return hours;
     }
+
     public void setHours(String hours) {
         this.hours = hours;
     }
@@ -68,6 +74,7 @@ public class PlaceModel {
     public String getEntryPrice() {
         return entryPrice;
     }
+
     public void setEntryPrice(String entryPrice) {
         this.entryPrice = entryPrice;
     }
@@ -75,6 +82,7 @@ public class PlaceModel {
     public String getFauna() {
         return fauna;
     }
+
     public void setFauna(String fauna) {
         this.fauna = fauna;
     }
@@ -82,8 +90,9 @@ public class PlaceModel {
     public String getFlora() {
         return flora;
     }
+
     public void setFlora(String flora) {
         this.flora = flora;
     }
-    
+
 }
