@@ -30,6 +30,8 @@ public class PlaceController {
         return this.PlaceService.obtenerPorId(id);
     }
 
+
+
    /* @GetMapping("/query")
     public ArrayList<PlaceModel> obtenerPlacePorPrioridad(@RequestParam("prioridad") Integer prioridad){
         return this.usuarioService.obtenerPorPrioridad(prioridad);
