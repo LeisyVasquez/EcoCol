@@ -6,14 +6,17 @@ const {
     getMain, 
     getAllPlaces,
     insertUser, 
-    deletePlace
+    deletePlace, 
+    getAllCities,
+    updatePlace
 } = require('./controller'); 
 
 //Rutas del backend
 router.get('/', getMain);
 router.get('/getAllPlaces', getAllPlaces);
 router.delete('/deletePlace', deletePlace); 
-
+router.get('/getAllCities', getAllCities); 
+router.put('/updatePlace',updatePlace); 
 
 router.post("/insertUser", insertUser);
 

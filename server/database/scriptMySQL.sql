@@ -7,18 +7,8 @@ DROP TABLE IF EXISTS `photoPlace`;
 DROP TABLE IF EXISTS `place`;
 DROP TABLE IF EXISTS `user`;
 
---
--- Database: `ecocol`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `city`
---
-
 CREATE TABLE `city` (
-  `code` int(10),
+  `code` int(10) AUTO_INCREMENT,
   `name` varchar(85) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -175,3 +165,9 @@ ALTER TABLE `photoPlace`
 ALTER TABLE `place`
   ADD CONSTRAINT `place_ibfk_1` FOREIGN KEY (`codeCity`) REFERENCES `city` (`code`);
 COMMIT;
+
+INSERT INTO city (code, name) VALUES (1, 'Medellín');
+INSERT INTO city (code, name) VALUES (2, 'Caldas');
+INSERT INTO city (code, name) VALUES (3, 'Bello');
+INSERT INTO city (name) VALUES ('Itagüí');
+INSERT INTO city (code, name) VALUES (4, 'Itagüí');
