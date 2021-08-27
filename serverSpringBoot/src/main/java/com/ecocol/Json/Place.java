@@ -10,18 +10,18 @@ public class Place {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    private Long id;
-    private String name;
-    private Long codeCity;
-    private Long hashCodeQR;
-    private String codeLocation;
-    private String description;
-    private String recomendation;
-    private String address;
-    private String hours;
-    private String entryPrice;
-    private String fauna;
-    private String flora;
+    public Long id;
+    public String name;
+    public Long codeCity;
+    public Long hashCodeQR;
+    public String codeLocation;
+    public String description;
+    public String recomendation;
+    public String address;
+    public String hours;
+    public String entryPrice;
+    public String fauna;
+    public String flora;
 
     public Place(String name, Long codeCity, Long hashCodeQR, String codeLocation, String description,
             String recomendation, String address, String hours, String entryPrice, String fauna, String flora) {
