@@ -1,5 +1,14 @@
 import React from "react";
-import { Card, Avatar, Col, Row } from "antd";
+import { Card, Col, Row } from "antd";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../../styles/listPlacesToCreated.css";
+import {
+  faTree,
+  faEye,
+  faTrashAlt,
+  faPen,
+  faPlusSquare,
+} from "@fortawesome/free-solid-svg-icons";
 import {
   EditOutlined,
   EllipsisOutlined,
@@ -9,11 +18,14 @@ const { Meta } = Card;
 
 const ListPlacesToCreated = () => {
   return (
-    <div className="m-5">
-      <Row>
+    <div className="m-3 ListPlacesToCreated">
+      <button className="btn mb-1" style={{ marginLeft: "92%" }}>
+        <FontAwesomeIcon icon={faPlusSquare} size="3x" color="white" />
+      </button>
+      <Row className="m-4">
         <Col span={6}>
-          {" "}
           <Card
+            className="cardCreatePlace "
             hoverable
             style={{ width: 300 }}
             cover={
@@ -25,12 +37,20 @@ const ListPlacesToCreated = () => {
               />
             }
             actions={[
-              <SettingOutlined key="setting" />,
-              <EditOutlined key="edit" />,
-              <EllipsisOutlined key="ellipsis" />,
+              <FontAwesomeIcon icon={faTrashAlt} size="lg" key="delete" />,
+              <FontAwesomeIcon icon={faPen} size="lg" key="edit" />,
+              <FontAwesomeIcon icon={faEye} size="lg" key="preview" />,
             ]}
           >
-            <Meta title="Cerro Pan de Azucar" description="Medellín" />
+            <Meta
+              title={
+                <>
+                  <FontAwesomeIcon icon={faTree} color="green" /> Cerro Pan de
+                  Azucar
+                </>
+              }
+              description="Medellín"
+            />
           </Card>
         </Col>
         <Col span={6}>
@@ -51,7 +71,14 @@ const ListPlacesToCreated = () => {
               <EllipsisOutlined key="ellipsis" />,
             ]}
           >
-            <Meta title="Parqué Arví" description="Medellín" />
+            <Meta
+              title={
+                <>
+                  <FontAwesomeIcon icon={faTree} color="green" /> Parque Arví
+                </>
+              }
+              description="Medellín"
+            />
           </Card>
         </Col>
         <Col span={6}>
@@ -72,11 +99,18 @@ const ListPlacesToCreated = () => {
               <EllipsisOutlined key="ellipsis" />,
             ]}
           >
-            <Meta title="Chorro de las campanas" description="Envigado" />
+            <Meta
+              title={
+                <>
+                  <FontAwesomeIcon icon={faTree} color="green" /> Chorro de las
+                  campanas
+                </>
+              }
+              description="Envigado"
+            />
           </Card>
         </Col>
         <Col span={6}>
-          {" "}
           <Card
             style={{ width: 300 }}
             cover={
@@ -94,12 +128,16 @@ const ListPlacesToCreated = () => {
             ]}
           >
             <Meta
-              title="Reserva natural Alto de San Miguel"
+              title={
+                <>
+                  <FontAwesomeIcon icon={faTree} color="green" /> Reserva
+                  natural Alto de San Miguel
+                </>
+              }
               description="Caldas"
             />
           </Card>
         </Col>
-        
       </Row>
     </div>
   );
