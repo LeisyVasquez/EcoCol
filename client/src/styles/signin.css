@@ -9,9 +9,7 @@
     color: white;
     font-size: 18px;
   }
-  .help-account, .help-create{
-      display: block;
-  }
+  
   .btn-ingresar{
       width: 400px;
       margin-right: 350px;

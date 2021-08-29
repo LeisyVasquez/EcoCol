@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../styles/navbar.css';
-
+import { getFromLocal, remove } from '../../config/localStorage';
+const userData = JSON.parse(getFromLocal('user')); 
 
 const TravelerNavbar = () => {
     return (
@@ -17,19 +18,21 @@ const TravelerNavbar = () => {
                 </div>
                 <div className="offcanvas offcanvas-end" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
                     <div className="offcanvas-header">
-                        <h5>Mary Luz Martinez Giraldo</h5>
+                        <h5>{userData.name}</h5>
                         <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div className="offcanvas-body">
                         <div className="mydiv animate-bg py-2">
                             <img className="d-block mt-3 mx-auto" src="https://raw.githubusercontent.com/JuanManuel-GAA/equipo7_gaa_ppi2020/22a4be8671d3b2ca676fd7a5f0d21e6148c81859/profile-user.svg" alt="profile" width="150" />
                         </div>
-                        <p className="fs-4 text-center mt-4">Aventurera</p>
+                        <p className="fs-4 text-center mt-4">{userData.typeUser === 'traveler' ? 'Viajero/Viajera' : 'Editor'}</p>
                         <div class="d-grid gap-2 col-6 mx-auto w-75 ">
                             <button class="btn btn-dark mt-2 fs-5" type="button">Mi perfil</button>
                             <button class="btn btn-dark mt-2 fs-5" type="button">Buscar amigos</button>
-                            <button class="btn btn-dark mt-2 fs-5" type="button">Cerrar sesión</button>
-                            <a href="/home-editor">Perfil editor</a>
+                            <button class="btn btn-dark mt-2 fs-5" type="button" onClick={()=>{
+                                window.location.pathname = "/"
+                                remove(); 
+                            }}>Cerrar sesión</button>
                         </div>
                     </div>
                 </div>

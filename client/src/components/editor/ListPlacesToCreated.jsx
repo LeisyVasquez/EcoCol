@@ -14,9 +14,16 @@ import {
   EllipsisOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
+import { validateEditorRoutes } from "../../config/functionsForValidatedRoutes";
 const { Meta } = Card;
 
 const ListPlacesToCreated = () => {
+
+  /**
+   * if(validateRoutes === 500){
+      window.location.pathname = "/error-route";
+    } 
+   */
   return (
     <div className="m-3 ListPlacesToCreated">
       <button className="btn mb-1" style={{ marginLeft: "92%" }}>
@@ -38,7 +45,7 @@ const ListPlacesToCreated = () => {
             }
             actions={[
               <FontAwesomeIcon icon={faTrashAlt} size="lg" key="delete" />,
-              <FontAwesomeIcon icon={faPen} size="lg" key="edit" />,
+              <FontAwesomeIcon icon={faPen} size="lg" key="edit" onClick={()=>{console.log('hola');}} />,
               <FontAwesomeIcon icon={faEye} size="lg" key="preview" />,
             ]}
           >
@@ -54,7 +61,6 @@ const ListPlacesToCreated = () => {
           </Card>
         </Col>
         <Col span={6}>
-          {" "}
           <Card
             style={{ width: 300 }}
             cover={
@@ -82,7 +88,6 @@ const ListPlacesToCreated = () => {
           </Card>
         </Col>
         <Col span={6}>
-          {" "}
           <Card
             style={{ width: 300 }}
             cover={

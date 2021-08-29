@@ -5,6 +5,7 @@ import axios from "axios";
 import { URL_SERVER_NODE } from "../../config/urlServers";
 import { PlusOutlined } from "@ant-design/icons";
 import _ from "lodash";
+import { validateEditorRoutes } from "../../config/functionsForValidatedRoutes";
 
 function getBase64(file) {
   return new Promise((resolve, reject) => {
@@ -15,7 +16,7 @@ function getBase64(file) {
   });
 }
 
-const ModalContentCreate = () => {
+const ModalContentCreate = ({ open, setOpen }) => {
   const [dataPlaceToCreate, setDataPlaceToCreate] = useState({});
   const [cities, setCities] = useState([]);
   const [previewVisible, setPreviewVisible] = useState(false);
@@ -68,7 +69,20 @@ const ModalContentCreate = () => {
   );
 
   return (
-    <div className="ModalContent">
+    <Modal
+      className="ModalContent"
+      title={<b>Crear lugar</b>}
+      visible={open}
+      style={{ top: 50 }}
+      maskClosable={false}
+      keyboard={false}
+      onCancel={() => setOpen(false)}
+      cancelText="Cancelar"
+      okText="Añadir"
+      width={800}
+      bodyStyle={{ padding: "30px" }}
+      onOk=""
+    >
       <b>
         <h3 className="text-center">Crear un lugar</h3>
       </b>
@@ -176,7 +190,7 @@ const ModalContentCreate = () => {
       >
         <img alt="example" style={{ width: "100%" }} src={previewImage} />
       </Modal>
-    </div>
+    </Modal>
   );
 };
 
