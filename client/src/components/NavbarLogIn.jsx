@@ -1,8 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/navbar.css";
 import { Input } from "antd";
+import swal from "sweetalert2";
+import axios from "axios";
+import { URL_SERVER_NODE } from "../config/urlServers";
+import { saveToLocal } from "../config/localStorage";
 
 const LogInNavbar = () => {
+  const [data, setData] = useState({});
+  const onChangeInputs = (e) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const singIn = () => {
+    axios
+      .post(`${URL_SERVER_NODE}/singIn`, data)
+      .then((res) => {
+        if (res.status === 200) {
+          saveToLocal("user", JSON.stringify(res.data));
+          if (res.data.typeUser === "editor")
+            window.location.pathname = "/home-editor";
+          else if (res.data.typeUser === "traveler")
+            window.location.pathname = "/home-traveler";
+        }
+      })
+      .catch((err) => {
+        const error = {err}; 
+        const status = error.err.response.status; 
+         if (status === 300) {
+          swal.fire({
+            icon: "error",
+            title: "Credenciales incorrectas",
+            text: "Revise de nuevo los datos ingresados",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+        } else if(status === 500){
+          swal.fire({
+            icon: "error",
+            title: "Error interno del servidor",
+            text: "Intente de nuevo o regrese después",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+        }
+      });
+  };
+
   return (
     <div className="Navbar">
       <nav className="navbar navbar-light bg-dark">
@@ -56,9 +103,10 @@ const LogInNavbar = () => {
             <div className="d-grid gap-2 col-6 mx-auto my-5 w-75 ">
               <Input
                 size="large"
-                name="user-name"
+                name="email"
                 placeholder="Correo electrónico"
                 className="mb-3"
+                onChange={onChangeInputs}
               />
               <Input
                 size="large"
@@ -66,12 +114,18 @@ const LogInNavbar = () => {
                 placeholder="Contraseña"
                 type="password"
                 className="mb-3"
+                onChange={onChangeInputs}
               />
-              <button className="btn btn-dark fs-5" type="button">
+              <button
+                className="btn btn-dark fs-5"
+                type="button"
+                onClick={singIn}
+              >
                 Iniciar sesión
               </button>
               <p className="fs-6 mt-2">
-                ¿No tienes una cuenta?<a href="/sign-up-traveler"> Regístrate</a>
+                ¿No tienes una cuenta?
+                <a href="/sign-up-traveler"> Regístrate</a>
               </p>
             </div>
           </div>

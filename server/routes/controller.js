@@ -1,5 +1,10 @@
 const { cnn_mysql } = require('../database/db')
 
+const errorServer = (err) => {
+    console.log(err)
+    return res.status(500).json('Internal Server Error')
+}
+
 module.exports = {
     getMain: (req, res) => {
         res
@@ -43,8 +48,7 @@ module.exports = {
                 )
             return res.status(200).json('Place update successfully')
         } catch (err) {
-            console.log(err)
-            return res.status(500).json('Internal Server Error')
+            errorServer(err, res)
         }
     },
     deletePlace: async (req, res) => {
@@ -57,8 +61,7 @@ module.exports = {
                 return res.status(200).json('Place delete successfully')
             else return res.status(209).json('Unexpected event on server')
         } catch (err) {
-            console.log(err)
-            return res.status(500).json('Internal Server Error')
+            errorServer(err, res)
         }
     },
     getAllCities: async (req, res) => {
@@ -76,8 +79,27 @@ module.exports = {
                 return res.status(200).json('User created successfully')
             else return res.status(209).json('Unexpected event on server')
         } catch (err) {
-            console.log(err)
-            return res.status(500).json('Internal Server Error')
+            errorServer(err, res)
+        }
+    },
+    singIn: async (req, res) => {
+        const { email, password } = req.body;
+        try {
+            const user = await cnn_mysql.promise().execute('SELECT * FROM user WHERE email = ?', [email]);
+            const dataUser = user[0][0];
+            if(user[0].length === 0){
+                return res.status(300).json('Bad email')
+            } else if (dataUser.password === password) {
+                return res.status(200).json({
+                    id: dataUser.id,
+                    name: dataUser.name,
+                    typeUser: dataUser.typeUser
+                })
+            } else {
+                return res.status(300).json('Bad password')
+            }
+        } catch (err) {
+            errorServer(err, res); 
         }
     }
 }

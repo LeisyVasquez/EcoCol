@@ -8,7 +8,8 @@ const {
     insertUser, 
     deletePlace, 
     getAllCities,
-    updatePlace
+    updatePlace, 
+    singIn
 } = require('./controller'); 
 
 //Rutas del backend
@@ -18,5 +19,6 @@ router.delete('/deletePlace', deletePlace);
 router.get('/getAllCities', getAllCities); 
 router.put('/updatePlace',updatePlace); 
 router.post("/insertUser", insertUser);
+router.post('/singIn', singIn); 
 
 module.exports = router;

@@ -13,14 +13,10 @@ const Home = () => {
   const [idPlaceSelect, setIdPlaceSelect] = useState([]);
 
   useLayoutEffect(() => {
-    axios
-      .get(`${URL_SERVER_NODE}/getAllPlaces`)
-      .then((res) => {
-        setPlaces(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      axios
+        .get(`${URL_SERVER_NODE}/getAllPlaces`)
+        .then((res) => setPlaces(res.data))
+        .catch((err) => console.log(err));
   }, []);
 
   return places.length > 0 ? (

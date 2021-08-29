@@ -5,4 +5,4 @@ export const getFromLocal = (key) => window.localStorage.getItem(key);
 //Función para borrar datos del localStorage  
 export const removeFromLocal = (key) => window.localStorage.removeItem(key);
 //Función para borrar todos los datos del localStorage 
-export const remove =() => window.localStorage.clear();
+export const remove = () => window.localStorage.clear();

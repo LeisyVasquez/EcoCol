@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 import "../../styles/signup.css";
 import { Input, DatePicker, Tooltip } from "antd";
 import { URL_SERVER_NODE } from "../../config/urlServers";
 import swal from "sweetalert2";
+import { validateEditorRoutes } from "../../config/functionsForValidatedRoutes";
+
 
 const SignUp = () => {
   const [data, setData] = useState({});
+
+  useLayoutEffect(() => {
+    const validateRoutes = validateEditorRoutes(); 
+    if(validateRoutes === 500){
+      window.location.pathname = "/error-route";
+    } 
+  }, []);
 
   const submitUser = () => {
     axios

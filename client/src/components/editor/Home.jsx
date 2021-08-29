@@ -10,6 +10,7 @@ import _ from "lodash";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 import swal from "sweetalert2";
+import { validateEditorRoutes } from "../../config/functionsForValidatedRoutes";
 
 const Home = () => {
   const [openEdit, setOpenEdit] = useState(false);
@@ -30,7 +31,12 @@ const Home = () => {
   };
 
   useLayoutEffect(() => {
-    getAllPlaces();
+    const validateRoutes = validateEditorRoutes(); 
+    if(validateRoutes === 500){
+      window.location.pathname = "/error-route";
+    } else {
+      getAllPlaces();
+    }
   }, []);
 
   const deletePlace = async (idPlace) => {
@@ -84,7 +90,6 @@ const Home = () => {
   };
 
   const updatePlace = (idPlace) => {
-    console.log(dataPlaceToUpdate);
     axios
       .put(`${URL_SERVER_NODE}/updatePlace`, dataPlaceToUpdate)
       .then((res) => {

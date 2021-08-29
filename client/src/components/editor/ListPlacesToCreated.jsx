@@ -14,9 +14,16 @@ import {
   EllipsisOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
+import { validateEditorRoutes } from "../../config/functionsForValidatedRoutes";
 const { Meta } = Card;
 
 const ListPlacesToCreated = () => {
+
+  /**
+   * if(validateRoutes === 500){
+      window.location.pathname = "/error-route";
+    } 
+   */
   return (
     <div className="m-3 ListPlacesToCreated">
       <button className="btn mb-1" style={{ marginLeft: "92%" }}>
