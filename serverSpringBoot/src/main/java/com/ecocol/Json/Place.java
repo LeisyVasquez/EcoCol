@@ -142,4 +142,11 @@ public class Place {
                 + " }";
     }
 
+    public String toStringL() {
+        return "Lugares:" + "id:" + id + ", codigo:" + codeCity + ", QR:" + hashCodeQR + ", nombre:" + name
+                + ", descripción:" + description + ", recomendaciones:" + recomendation + ", dirección:" + address
+                + ", horarios:" + hours + ", precio de entrada:" + entryPrice + ", flora:" + flora + ", fauna:" + fauna
+                ;
+    }
+
 }

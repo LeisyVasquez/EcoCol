@@ -27,7 +27,7 @@ public class ListPlace {
         else {
             NodoPlace pointer = head;
             while (pointer != null) {
-                String response = pointer.value.toString();
+                String response = pointer.value.toStringL();
                 System.out.println(response);
                 pointer = pointer.next;
             }
@@ -49,9 +49,7 @@ public class ListPlace {
         System.out.println("El lugar no existe");
     }
 
-    public void showPlace() {
 
-    }
 
     // Eliminar un lugar por el nombre
     public void deletePlace(String namePlace) {
@@ -72,4 +70,12 @@ public class ListPlace {
             }
         }
     }
+
+    public char[] addPlace(String name, String ubication_city, String codeCity, String hashCodeQR, String codeLocation,
+            String description, String recomendation, String address, String hours, String entryPrice, String fauna,
+            String flora) {
+        return null;
+    }
+
+
 }
