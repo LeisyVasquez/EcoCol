@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useState } from "react";
 import { Modal } from "antd";
 import ModalContentEdit from "./ModalContentEdit";
-import ModalContentCreate from "./ModalContentCreate";
+import ModalCreatePlace from "./ModalCreatePlace";
 import "antd/dist/antd.css";
 import "../../styles/home.css";
 import axios from "axios";
@@ -51,8 +51,8 @@ const Home = () => {
           axios
             .delete(`${URL_SERVER_NODE}/deletePlace`, { data: { id: idPlace } })
             .then((res) => {
+              getAllPlaces();
               if (res.status === 200) {
-                getAllPlaces();
                 swal.fire({
                   icon: "success",
                   title: "Lugar eliminado coorrectamente",
@@ -60,7 +60,6 @@ const Home = () => {
                   timer: 2000,
                 });
               } else {
-                getAllPlaces();
                 swal.fire({
                   icon: "info",
                   title: "Ocurrió un evento inesperado",
@@ -115,7 +114,12 @@ const Home = () => {
   return places.length > 0 ? (
     <div className="Home">
       <button className="btn mt-4" style={{ marginLeft: "88%" }}>
-        <FontAwesomeIcon icon={faPlusSquare} size="3x" color="white" onClick={()=>setOpenCreate(true)}/>
+        <FontAwesomeIcon
+          icon={faPlusSquare}
+          size="3x"
+          color="white"
+          onClick={() => setOpenCreate(true)}
+        />
       </button>
       <input
         className="form-control fs-5 w-75 mx-auto"
@@ -198,21 +202,7 @@ const Home = () => {
         )}
 
         {openCreate && (
-          <Modal
-            title={<b>Crear lugar</b>}
-            visible={openCreate}
-            style={{ top: 50 }}
-            maskClosable={false}
-            keyboard={false}
-            onCancel={() => setOpenCreate(false)}
-            cancelText="Cancelar"
-            okText="Añadir"
-            width={800}
-            bodyStyle={{ padding: "30px" }}
-            onOk={updatePlace}
-          >
-            <ModalContentCreate />
-          </Modal>
+          <ModalCreatePlace open={openCreate} setOpen={setOpenCreate} />
         )}
       </div>
     </div>

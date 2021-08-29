@@ -38,7 +38,7 @@ const ListPlacesToCreated = () => {
             }
             actions={[
               <FontAwesomeIcon icon={faTrashAlt} size="lg" key="delete" />,
-              <FontAwesomeIcon icon={faPen} size="lg" key="edit" />,
+              <FontAwesomeIcon icon={faPen} size="lg" key="edit" onClick={()=>{console.log('hola');}} />,
               <FontAwesomeIcon icon={faEye} size="lg" key="preview" />,
             ]}
           >
@@ -54,7 +54,6 @@ const ListPlacesToCreated = () => {
           </Card>
         </Col>
         <Col span={6}>
-          {" "}
           <Card
             style={{ width: 300 }}
             cover={
@@ -82,7 +81,6 @@ const ListPlacesToCreated = () => {
           </Card>
         </Col>
         <Col span={6}>
-          {" "}
           <Card
             style={{ width: 300 }}
             cover={

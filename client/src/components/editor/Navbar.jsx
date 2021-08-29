@@ -26,8 +26,12 @@ const EditorNavbar = () => {
                         </div>
                         <div className="d-grid gap-2 col-6 mx-auto w-75 ">
                             <button className="btn btn-dark mt-5 fs-5" type="button">Mi perfil</button>
-                            <button className="btn btn-dark mt-3 fs-5" type="button">Registrar nuevos editores</button>
-                            <button className="btn btn-dark mt-3 fs-5" type="button">Cerrar sesión</button>
+                            <button className="btn btn-dark mt-3 fs-5" type="button" onClick={()=>{
+                                window.location.pathname = "/sign-up-editor"
+                            }}>Registrar nuevos editores</button>
+                            <button className="btn btn-dark mt-3 fs-5" type="button" onClick={()=>{
+                                window.location.pathname = "/"
+                            }}>Cerrar sesión</button>
                             <a href="/">Perfil viajero</a>
                         
                         </div>

@@ -17,7 +17,6 @@ router.get('/getAllPlaces', getAllPlaces);
 router.delete('/deletePlace', deletePlace); 
 router.get('/getAllCities', getAllCities); 
 router.put('/updatePlace',updatePlace); 
-
 router.post("/insertUser", insertUser);
 
 module.exports = router;
