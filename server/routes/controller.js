@@ -1,4 +1,5 @@
 const { cnn_mysql } = require('../database/db')
+var InsertQuery = require('mysql-insert-multiple');
 
 const errorServer = (err) => {
     console.log(err)
@@ -98,6 +99,23 @@ module.exports = {
             } else {
                 return res.status(300).json('Bad password')
             }
+        } catch (err) {
+            errorServer(err, res); 
+        }
+    }, 
+    insertPlaces:  async (req, res) => {
+        try {
+            const { data } = req.body; 
+            console.log(data)
+            let query = InsertQuery({
+                table: 'place',
+                maxRow: data.length,
+                data: data
+            })
+            query = query.next();
+            const rows = await cnn_mysql.promise().execute(query);
+            if (rows[0].affectedRows > 0) res.status(200).send('todo ok')
+            else res.status(500).send('Se presentó un error inesperado')
         } catch (err) {
             errorServer(err, res); 
         }
