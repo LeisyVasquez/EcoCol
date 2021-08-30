@@ -10,7 +10,7 @@ const EditorNavbar = () => {
     <div className="Navbar">
       <nav className="navbar navbar-light bg-dark">
         <div className="mx-3 my-1" style={{ width: "100vw" }}>
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand" href="/home-editor">
             <img
               className=""
               src="https://raw.githubusercontent.com/JuanManuel-GAA/equipo7_gaa_ppi2020/master/Recursos%20gu%C3%ADa/logo%20(1).png"

@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Upload, Modal, Input, Row, Col, Select } from "antd";
 import "../../styles/modalContent.css";
 import axios from "axios";
-import { URL_SERVER_NODE } from "../../config/urlServers";
+import { URL_SERVER_NODE, URL_SERVER_JAVA } from "../../config/urlServers";
 import { PlusOutlined } from "@ant-design/icons";
 import _ from "lodash";
 import { validateEditorRoutes } from "../../config/functionsForValidatedRoutes";
+import swal from "sweetalert2";
 
 function getBase64(file) {
   return new Promise((resolve, reject) => {
@@ -23,6 +24,7 @@ const ModalContentCreate = ({ open, setOpen }) => {
   const [previewImage, setPreviewImage] = useState("");
   const [previewTitle, setPreviewTitle] = useState("");
   const [fileList, setFileList] = useState([]);
+  const [idPlaceToCreated, setIdPlaceToCreated] = useState(4);
 
   const handleCancel = () => setPreviewVisible(false);
 
@@ -68,6 +70,38 @@ const ModalContentCreate = ({ open, setOpen }) => {
     </div>
   );
 
+  const createPlace = () => {
+    console.log(dataPlaceToCreate.description); 
+    axios
+      .post(`${URL_SERVER_JAVA}/addPlace`, {
+        id: idPlaceToCreated,
+        name: dataPlaceToCreate.name,
+        codeCity: dataPlaceToCreate.codeCity,
+        hashCodeQR: 0,
+        codeLocation: "",
+        description: dataPlaceToCreate.description,
+        recomendation: dataPlaceToCreate.recomendation,
+        address: dataPlaceToCreate.address,
+        hours: dataPlaceToCreate.hours,
+        entryPrice: dataPlaceToCreate.entryPrice,
+        flora: dataPlaceToCreate.flora,
+        fauna: dataPlaceToCreate.fauna,
+      })
+      .then(res => {
+        setIdPlaceToCreated(idPlaceToCreated+1);
+        window.location.pathname = "/list-places-to-created";
+      })
+      .catch(err => {
+        swal.fire({
+          icon: "error",
+          title: "Error interno del servidor",
+          text: "Intente de nuevo o regrese después",
+          showConfirmButton: false,
+          timer: 3000,
+        });
+      });
+  };
+
   return (
     <Modal
       className="ModalContent"
@@ -81,7 +115,7 @@ const ModalContentCreate = ({ open, setOpen }) => {
       okText="Añadir"
       width={800}
       bodyStyle={{ padding: "30px" }}
-      onOk=""
+      onOk={createPlace}
     >
       <b>
         <h3 className="text-center">Crear un lugar</h3>

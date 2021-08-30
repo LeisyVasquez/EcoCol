@@ -43,6 +43,16 @@
             "mainClass": "com.ecocol.serverSpringBoot.GsonSpringBootApplication",
             "projectName": "serverSpringBoot",
             "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EcocolApplication<serverSpringBoot>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.ecocol.ecocol.EcocolApplication",
+            "projectName": "serverSpringBoot",
+            "args": ""
         }
     ]
 }

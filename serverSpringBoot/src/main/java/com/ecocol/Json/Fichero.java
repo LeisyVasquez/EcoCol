@@ -1,6 +1,7 @@
 package com.ecocol.Json;
 
 import com.google.gson.Gson;
+
 //import com.google.gson.JsonArray;
 
 import java.io.BufferedReader;
@@ -14,7 +15,7 @@ public class Fichero {
         // C:/Users/maric/OneDrive/Escritorio/EcoCol/serverSpringBoot/src/main/java/com/ecocol/Json/place.json
         // C:/Users/Leisy/Documents/Poli/PPI/EcoCol/serverSpringBoot/src/main/java/com/ecocol/Json/place.json
         String fichero = "";
-        String pathPlaceJson = "C:/Users/maric/OneDrive/Escritorio/EcoCol/serverSpringBoot/src/main/java/com/ecocol/Json/place.json";
+        String pathPlaceJson = "C:/Users/Leisy/Documents/Poli/PPI/EcoCol/serverSpringBoot/src/main/java/com/ecocol/Json/place.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(pathPlaceJson))) {
             String linea;
             while ((linea = br.readLine()) != null) {
@@ -33,11 +34,8 @@ public class Fichero {
             System.out.println(ex.getMessage());
         }
 
-        Gson gson = new Gson();
-        Place place = gson.fromJson(fichero, Place.class);
-        System.out.println(place);
-        listPlace.addPlace(place);
-        listPlace.showPlaces();
+        System.out.println(fichero);
+        
         
 
     }
