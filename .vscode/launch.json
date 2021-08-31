@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch EcocolApplication",
+            "request": "launch",
+            "mainClass": "com.ecocol.ecocol.EcocolApplication",
+            "projectName": "ecocol"
+        },
+        {
+            "type": "java",
             "name": "Launch GsonSpringBootApplication",
             "request": "launch",
             "mainClass": "com.ecocol.GsonSpringBootApplication",

@@ -5,7 +5,6 @@ import "../../styles/modalContent.css";
 import axios from "axios";
 import { URL_SERVER_NODE } from "../../config/urlServers";
 import _ from "lodash";
-import { validateEditorRoutes } from "../../config/functionsForValidatedRoutes";
 
 function getBase64(file) {
   return new Promise((resolve, reject) => {

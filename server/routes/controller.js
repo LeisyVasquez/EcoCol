@@ -88,7 +88,7 @@ module.exports = {
         try {
             const user = await cnn_mysql.promise().execute('SELECT * FROM user WHERE email = ?', [email]);
             const dataUser = user[0][0];
-            if(user[0].length === 0){
+            if (user[0].length === 0) {
                 return res.status(300).json('Bad email')
             } else if (dataUser.password === password) {
                 return res.status(200).json({
@@ -100,13 +100,12 @@ module.exports = {
                 return res.status(300).json('Bad password')
             }
         } catch (err) {
-            errorServer(err, res); 
+            errorServer(err, res);
         }
-    }, 
-    insertPlaces:  async (req, res) => {
+    },
+    insertPlaces: async (req, res) => {
         try {
-            const { data } = req.body; 
-            console.log(data)
+            const { data } = req.body;
             let query = InsertQuery({
                 table: 'place',
                 maxRow: data.length,
@@ -117,7 +116,7 @@ module.exports = {
             if (rows[0].affectedRows > 0) res.status(200).send('todo ok')
             else res.status(500).send('Se presentó un error inesperado')
         } catch (err) {
-            errorServer(err, res); 
+            errorServer(err, res);
         }
     }
 }

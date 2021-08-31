@@ -80,7 +80,7 @@ const ModalContentCreate = ({ open, setOpen }) => {
         hashCodeQR: 0,
         codeLocation: "",
         description: dataPlaceToCreate.description,
-        recomendation: dataPlaceToCreate.recomendation,
+        recommendations: dataPlaceToCreate.recommendations,
         address: dataPlaceToCreate.address,
         hours: dataPlaceToCreate.hours,
         entryPrice: dataPlaceToCreate.entryPrice,

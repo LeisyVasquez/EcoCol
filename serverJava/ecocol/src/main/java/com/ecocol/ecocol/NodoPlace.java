@@ -1,4 +1,4 @@
-package com.ecocol.Json;
+package com.ecocol.ecocol;
 
 public class NodoPlace {
     public Place value = null;

@@ -1,8 +1,6 @@
-package com.ecocol.Json;
-
+package com.ecocol.ecocol;
 
 public class ListPlace {
-
     public NodoPlace head = null;
     public int size = 0;
 
@@ -20,36 +18,62 @@ public class ListPlace {
         size++;
     }
 
-    // Mostrar todos los lugares de la lista
-    public void showPlaces() {
+    //Mostrar todos los lugares de la lista
+    public Place[] showPlaces() {
+        Place[] places = new Place[this.size];
+        int cont = 0;
         if (head == null)
             System.out.println("No hay lugares para visualizar");
         else {
             NodoPlace pointer = head;
             while (pointer != null) {
-                String response = pointer.value.toStringL();
-                System.out.println(response);
+                places[cont] = pointer.value;
                 pointer = pointer.next;
+                cont++;
             }
         }
+        return places;
     }
 
-    public void searchPlace(String lugar) {
+    public static ListPlace convertToListPlace(String fichero){
+        String [] placesString = fichero.split("¤");  
+        ListPlace places =  new ListPlace();
+        for(int i = 0;i<placesString.length;i++){
+            String itemsPlace [] = placesString[i].split("~");
+            places.addPlace(
+                new Place(
+                    Long.parseLong(itemsPlace[0]),
+                    itemsPlace[1], 
+                    Long.parseLong(itemsPlace[2]), 
+                    Long.parseLong(itemsPlace[3]), 
+                    itemsPlace[4], 
+                    itemsPlace[5],
+                    itemsPlace[6],
+                    itemsPlace[7], 
+                    itemsPlace[8], 
+                    itemsPlace[9], 
+                    itemsPlace[10], 
+                    itemsPlace[11]
+                )
+            );
+        }
+        System.out.println(places.size);
+        return places;
+    }
+    
+    public Place searchPlace(Long id) {
         if (head == null)
             System.out.println("No hay lugares para buscar");
         NodoPlace pointer = head;
         while (pointer != null) {
-            if (pointer.value.name.equals(lugar)) {
-                String response = pointer.value.toString();
-                System.out.println(response);
-                return; 
+            if (pointer.value.id.equals(id)) {
+                Place response = pointer.value;
+                return response;
             }
             pointer = pointer.next;
         }
-        System.out.println("El lugar no existe");
+        return null; 
     }
-
-
 
     // Eliminar un lugar por el nombre
     public void deletePlace(String namePlace) {
@@ -72,10 +96,8 @@ public class ListPlace {
     }
 
     public char[] addPlace(String name, String ubication_city, String codeCity, String hashCodeQR, String codeLocation,
-            String description, String recomendation, String address, String hours, String entryPrice, String fauna,
+            String description, String recomemndations, String address, String hours, String entryPrice, String fauna,
             String flora) {
         return null;
     }
-
-
 }
