@@ -159,5 +159,9 @@ module.exports = {
         } catch (err) {
             console.log(err)
         }
+    },
+    getImages: async (req, res) => {
+        const response = await cnn_mysql.promise().execute("SELECT * FROM photoPlace");
+        return res.json(response[0]);
     }
 }

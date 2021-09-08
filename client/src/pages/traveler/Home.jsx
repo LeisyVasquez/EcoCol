@@ -5,7 +5,8 @@ import Home from '../../components/traveler/Home';
 import Footer from "../../components/Footer";
 
 const homeTraveler = () => {
- return(
+  console.log("abueno");
+  return(
     <div>
       <Navbar />
       <Home />

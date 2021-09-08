@@ -11,7 +11,8 @@ const {
     updatePlace, 
     singIn,
     insertPlaces,
-    sendImg
+    sendImg,
+    getImages
 } = require('./controller'); 
 
 //Rutas del backend
@@ -24,5 +25,6 @@ router.post("/insertUser", insertUser);
 router.post('/singIn', singIn); 
 router.post('/insertPlaces',insertPlaces); 
 router.post('/sendImg', sendImg)
+router.get("/getAllImages", getImages);
 
 module.exports = router;
