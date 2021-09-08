@@ -5,7 +5,7 @@ const Error = () => {
   return (
     <>
       <div>
-        <h1>Error, esta ruta no es permitida.</h1>
+        <h1 style={{color: 'white'}}>Error, esta ruta no es permitida.</h1>
       </div>
     </>
   );

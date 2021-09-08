@@ -1,10 +1,37 @@
 const { cnn_mysql } = require('../database/db')
 var InsertQuery = require('mysql-insert-multiple');
+const multer = require('multer');
+const path = require('path');
+const uuid = require('uuid/v4');
+
 
 const errorServer = (err) => {
     console.log(err)
     return res.status(500).json('Internal Server Error')
 }
+
+//Establecer el lugar de almacenamiento para las imagenes de las tarjetas
+const storage = multer.diskStorage({
+    destination: path.join(__dirname, '../../client/public'),
+    filename: (req, file, cb) => {
+        cb(null, uuid() + file.originalname);
+    }
+})
+
+//Carga de imagen
+const uploadImg = multer({
+    storage,
+    limits: { fileSize: 1000000 },
+    fileFilter: function (req, file, cb) {
+        var filetypes = /jpeg|jpg|png/;
+        var mimetype = filetypes.test(file.mimetype);
+        var extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+        if (mimetype && extname) {
+            return cb(null, true);
+        }
+        cb(new Error("Error: File upload only supports the following filetypes - " + filetypes));
+    }
+}).single('img');
 
 module.exports = {
     getMain: (req, res) => {
@@ -117,6 +144,20 @@ module.exports = {
             else res.status(500).send('Se presentó un error inesperado')
         } catch (err) {
             errorServer(err, res);
+        }
+    },
+    sendImg: async (req, res) => {
+        console.log(req); 
+        try {
+            uploadImg(req, res, (err) => {
+                if (err) {
+                    return res.status(210).json({ status: 0, message: err });
+                } else {
+                    res.status(201).json({ status: 1, message: req.file });
+                }
+            })
+        } catch (err) {
+            console.log(err)
         }
     }
 }

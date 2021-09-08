@@ -34,6 +34,17 @@ CREATE TABLE cities (
   PRIMARY KEY (code)
 ) TABLESPACE TablespaceEcoCol;
 
+INSERT INTO cities (code, name) VALUES(05079, 'Barbosa'); 
+INSERT INTO cities (code, name) VALUES(05088, 'Bello'); 
+INSERT INTO cities (code, name) VALUES(05129, 'Caldas'); 
+INSERT INTO cities (code, name) VALUES(05212, 'Copacabana'); 
+INSERT INTO cities (code, name) VALUES(05266, 'Envigado'); 
+INSERT INTO cities (code, name) VALUES(05308, 'Girardota'); 
+INSERT INTO cities (code, name) VALUES(05360, 'Itagüi'); 
+INSERT INTO cities (code, name) VALUES(05380, 'La Estrella'); 
+INSERT INTO cities (code, name) VALUES(05001, 'Medellín'); 
+INSERT INTO cities (code, name) VALUES(05631, 'Sabaneta'); 
+
 CREATE TABLE places (
    id INTEGER,
    codeCity INTEGER NOT NULL, 
@@ -51,6 +62,8 @@ CREATE TABLE places (
    FOREIGN KEY (codeCity) REFERENCES cities(code)
 ) TABLESPACE TablespaceEcoCol; 
 
+INSERT INTO(id, codeCity, name, hashCodeQR, codeLocation, description, recommendations, address, hours, entryPrice, fauna, flora)
+VALUES (1, )
 CREATE TABLE favoritedAndVisitedPlaces (
   idUser INTEGER, 
   idPlace INTEGER,
