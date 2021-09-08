@@ -37,7 +37,7 @@ const App = () => {
 
 ReactDOM.render(
   <React.StrictMode>
-    <App path={_HomeTraveler} />
+    <App path={_HomeGeneral} />
   </React.StrictMode>,
   document.getElementById('root')
 );

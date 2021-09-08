@@ -8,6 +8,7 @@ import {
   SnippetsOutlined,
   PictureOutlined,
 } from "@ant-design/icons";
+import "../../styles/modalContent.css";
 import { Tabs } from "antd";
 import { Modal } from "antd";
 
@@ -38,43 +39,26 @@ const ModalContent = ({ places, idPlaceSelect, open, setOpen }) => {
       <b>
         <h3 className="text-center">{place.name}</h3>
       </b>
-      <div
-        id="carouselControls"
-        className="carousel slide"
-        data-bs-ride="carousel"
-      >
-        <div
-          className="carousel-inner m-auto"
-          style={{ width: "90%", boxShadow: "0 20px 40px #70db24" }}
-        >
-          <div className="carousel-item active">
-            <img
-              src="https://www.medellin.travel/wp-content/uploads/2020/06/Alto-San-Miguel.jpg"
-              width="800"
-              height="300"
-              className="d-block w-100"
-              alt="Aquí nace el rio Medellín"
-            />
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="http://www.elmundo.com/images/ediciones/Lunes_30_12_2013/Lunes_30_12_2013@@SAN-MIGUEL-600.jpg" class="d-block w-100" alt="..." />
           </div>
           <div class="carousel-item">
-            <img
-              src="http://www.elmundo.com/images/ediciones/Lunes_30_12_2013/Lunes_30_12_2013@@SAN-MIGUEL-600.jpg"
-              width="800"
-              height="300"
-              className="d-block w-100"
-              alt="Clave para la biodiversidad"
-            />
+            <img src="https://cr00.epimg.net/emisora/imagenes/2016/10/05/medellin/1475693059_346276_1475693190_noticia_normal.jpg" class="d-block w-100" alt="..." />
           </div>
           <div class="carousel-item">
-            <img
-              src="https://cr00.epimg.net/emisora/imagenes/2016/10/05/medellin/1475693059_346276_1475693190_noticia_normal.jpg"
-              width="800"
-              height="300"
-              className="d-block w-100"
-              alt="Reserva forestal"
-            />
+            <img src="https://www.medellin.travel/wp-content/uploads/2020/06/Alto-San-Miguel.jpg" class="d-block w-100" alt="..." />
           </div>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Siguiente</span>
+        </button>
       </div>
       <Tabs className="mt-4">
         <TabPane

@@ -9,7 +9,7 @@ import ErrorRoute from "../components/ErrorRoute";
 const userData = JSON.parse(getFromLocal("user"));
 
 const errorRoute = () => {
-  return (
+  return ( 
     <div>
       {userData !== undefined &&
       userData !== null &&
