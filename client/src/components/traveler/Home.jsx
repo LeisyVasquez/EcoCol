@@ -37,7 +37,7 @@ const Home = () => {
           return (
             <div
               className="container place p-2 my-5"
-              style={{ color: "black" }}
+              style={{ color: "white" }}
               key={key}
             >
               <div className="divImgPlace">
@@ -50,7 +50,7 @@ const Home = () => {
                 />
               </div>
               <div className="float-end border border-white p-2 mt-5 mx-3">
-                <h5 className="mt-2" style={{ color: "black" }}>
+                <h5 className="mt-2" style={{ color: "white" }}>
                   ¿Visitaste el lugar?
                 </h5>
                 <img

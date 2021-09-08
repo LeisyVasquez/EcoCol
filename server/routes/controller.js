@@ -1,4 +1,4 @@
-const { cnn_mysql } = require('../database/db')
+const { cnn_mysql } = require('../database/dbMySQL')
 var InsertQuery = require('mysql-insert-multiple');
 const multer = require('multer');
 const path = require('path');
