@@ -5,7 +5,7 @@ const path = require('path');
 const uuid = require('uuid/v4');
 
 
-const errorServer = (err) => {
+const errorServer = (err, res) => {
     console.log(err)
     return res.status(500).json('Internal Server Error')
 }
@@ -37,7 +37,7 @@ module.exports = {
     getMain: (req, res) => {
         res
             .status(200)
-            .send('<h1>Bienvenido al servidor de la aplicación EcoCol</h1>')
+            .send('<h1>Bienvenido al servidor con MySQL de la aplicación EcoCol</h1>')
     },
     getAllPlaces: async (req, res) => {
         const response = await cnn_mysql.promise().execute('SELECT * FROM place')
@@ -80,7 +80,6 @@ module.exports = {
         }
     },
     deletePlace: async (req, res) => {
-        console.log(req.body)
         try {
             const response = await cnn_mysql
                 .promise()

@@ -2,7 +2,7 @@ const { Router } = require('express');
 const handleErrors = require('../error/handleErrors');
 const router = Router();
 
-const {
+/*const {
     getMain, 
     getAllPlaces,
     insertUser, 
@@ -12,7 +12,26 @@ const {
     singIn,
     insertPlaces,
     sendImg
-} = require('./controller'); 
+} = require('./controllerMySQL');*/
+
+const {
+    insertUser, 
+    deletePlace, 
+    updatePlace, 
+    singIn,
+    insertPlaces,
+    sendImg,
+    getMain, 
+    getAllPlaces,
+    getAllCities,
+} = require('./controllerMySQL');
+
+/*const {
+    getMain, 
+    getAllPlaces,
+    getAllCities,
+} = require('./controllerOracleDb');*/
+
 
 //Rutas del backend
 router.get('/', getMain);
